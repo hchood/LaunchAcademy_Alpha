@@ -60,9 +60,8 @@ if action == "1"
     sale << quantity
   end
   # prices = [["light", "5.0"], ["medium", "7.5"], ["bold", "9.75"]]
-  # subtotal =
-  # quantities = [0,0,0]
-  # sale = [time,0,0,0]
+  # quantities = [0, 0, 0]
+  # sale = [time, 0, 0, 0]
 
   def calc_subtotal(quantities, prices)
     subtotal = 0
@@ -85,12 +84,6 @@ if action == "1"
   item = ask_item(products)
   num_items = products.length
 
-  # Figure out how to display running subtotal after each item,
-  # using our new data structures
-  # [HCH note:  We'll have to push quantities to sale array, which =
-  # [Time, quant_light, quant_med, quant_bold].  So running total =
-  # sale[i]*prices[i][1], iterating over sales where i is 1-3]
-
   until item == (num_items + 1).to_s
     puts "How many bags?"
     quantity = gets.chomp.to_i
@@ -101,9 +94,19 @@ if action == "1"
     puts 'Subtotal: $' + sprintf('%.2f' % current_subtotal)
     item = ask_item(products)
   end
+  # binding.pry
 
-  # puts '===Sale Complete==='
-  # puts
+  puts '===Sale Complete==='
+  puts
+
+  def output_item_subtotals(quantities, prices)
+    quantities.each_with_index do |quantity, index|
+      item_subtotal = quantity * prices[index][1].to_f
+      puts "$#{sprintf('%.2f' % item_subtotal)} - #{quantity} #{prices[index][0].capitalize}" unless quantity == 0
+    end
+  end
+
+  output_item_subtotals(quantities, prices)
 
   # @prices.keys.each do |i|
   #   num_bags = @prices[i][:quant]
@@ -112,8 +115,8 @@ if action == "1"
   #   puts "$#{ sprintf('%.2f' % subtotal) } - #{ num_bags } #{ @prices[i][:desc] }"
   # end
 
-  # puts "\nTotal: $" + sprintf('%.2f' % running_total)
-  # puts
+  puts "\nTotal: $" + sprintf('%.2f' % calc_subtotal(quantities, prices))
+  puts
 
   # # calculate the change due, as before
 
