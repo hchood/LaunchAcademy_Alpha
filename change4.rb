@@ -97,7 +97,6 @@ if action == "1"
   # binding.pry
 
   puts '===Sale Complete==='
-  puts
 
   def output_item_subtotals(quantities, prices)
     quantities.each_with_index do |quantity, index|
@@ -108,37 +107,29 @@ if action == "1"
 
   output_item_subtotals(quantities, prices)
 
-  # @prices.keys.each do |i|
-  #   num_bags = @prices[i][:quant]
-  #   next if num_bags == 0
-  #   subtotal = @prices[i][:price] * num_bags
-  #   puts "$#{ sprintf('%.2f' % subtotal) } - #{ num_bags } #{ @prices[i][:desc] }"
-  # end
+  puts "\nTotal: $" + sprintf('%.2f' % current_subtotal)
 
-  puts "\nTotal: $" + sprintf('%.2f' % calc_subtotal(quantities, prices))
-  puts
+  # calculate the change due, as before
 
-  # # calculate the change due, as before
+  puts 'What is the amount tendered?'
+  tendered = gets.chomp
 
-  # puts 'What is the amount tendered?'
-  # tendered = gets.chomp
+  unless is_valid_currency?(tendered)
+    puts 'WARNING: Invalid currency detected! Exiting...'
+  else
+    change = tendered.to_f - current_subtotal
+    if change < 0
+      print 'WARNING: Customer still owes $' + sprintf('%.2f' % change.abs)
+      puts '! Exiting...'
+    else
+    # success point, append sale array to sales.csv
 
-  # if !is_valid_currency?(tendered)
-  #   puts 'WARNING: Invalid currency detected! Exiting...'
-  # else
-  #   change = tendered.to_f - running_total
-  #   if change < 0
-  #     print 'WARNING: Customer still owes $' + sprintf('%.2f' % change.abs)
-  #     puts '! Exiting...'
-  #   else
-  #   # success point, append sale array to sales.csv
-
-  #     puts "\n===Thank You!==="
-  #     puts 'The total change due is $' + sprintf('%.2f' % change)
-  #     puts Time.now.strftime('%D %r')
-  #     puts '================'
-  #   end
-  #  end
+      puts "\n===Thank You!==="
+      puts 'The total change due is $' + sprintf('%.2f' % change)
+      puts Time.now.strftime('%D %r')
+      puts '================'
+    end
+   end
 
 else
 
