@@ -1,0 +1,49 @@
+Write User Stories for this scenario:
+
+A publication wants to make their past articles available to their subscribers. Non subscribers are also able to view abstracts or summaries of articles, and there is a way for them to either join, or pay to view individual articles.
+
+As publisher
+I want to make past articles available to subscribers
+So that subscribers get access to extra content
+[or So that subscription becomes more attractive?]
+
+
+
+As a publisher
+I want to make abstracts and summaries available to non-subscribers
+So that non-subscribers can see what they’re missing by not being a subscriber
+
+
+As a publisher
+I want to provide non-subscribers a way to join
+So that I can increase paid subscribers
+
+
+
+As a publisher
+I want to provide non-subscribers a way to pay to view individual articles
+So that I can still make money off of non-subscribers
+
+
+
+As a subscriber
+I want a way to view past articles
+So I can get the most out of my subscription
+
+
+
+As a non-subscriber
+I want to be able to view abstracts or summaries
+So that I can get a little information about the subject or article and/or determine whether or not I want to buy the article or a full subscription
+
+
+
+As a non-subscriber
+I want to be able to subscribe
+So that I can view all content on the site
+
+
+
+As a non-subscriber
+I want to be able to pay to view individual articles
+So that I can get access to interesting articles without paying for a whole subscription
