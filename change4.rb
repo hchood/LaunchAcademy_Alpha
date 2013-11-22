@@ -122,8 +122,9 @@ if action == "1"
       print 'WARNING: Customer still owes $' + sprintf('%.2f' % change.abs)
       puts '! Exiting...'
     else
-    # success point, append sale array to sales.csv
-
+      CSV.open('sales.csv', 'a') do |csv|
+        csv << sale
+      end
       puts "\n===Thank You!==="
       puts 'The total change due is $' + sprintf('%.2f' % change)
       puts Time.now.strftime('%D %r')
